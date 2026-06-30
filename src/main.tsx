@@ -15,65 +15,73 @@ type Slide = {
 const slides: Slide[] = [
   {
     marker: 'A',
-    eyebrow: '[ v01b ]',
+    eyebrow: '[ AI 先行者 ]',
     title: (
       <>
-        WHERE AI<br />MERGES<br /><span className="thin">with</span><br />
-        <span className="indent">// YOUR</span><br />
-        <span className="indent deep">VISION</span>
+        让 AI<br />
+        融合<br />
+        <span className="thin">你的</span><br />
+        <span className="indent">// 商业</span><br />
+        <span className="indent deep">远见</span>
       </>
     ),
-    copy: 'NUWA transforms intuition into interface systems — a calm, precise workspace for ideas before they become products.',
-    action: 'GET STARTED',
+    copy: 'NUWA AI UI 为 ReyMao 打造：把管理经验、系统化方法和 AI 产品表达，转化为高端、克制、可信的数字界面。',
+    action: '开始探索',
     visual: 'threads',
   },
   {
     marker: 'B',
-    eyebrow: '[ neural canvas ]',
+    eyebrow: '[ 系统化增长 ]',
     title: (
       <>
-        START <span className="thin">seeing</span><br />DIFFERENTLY
+        从经验<br />
+        到<span className="thin">系统</span><br />
+        再到规模化
       </>
     ),
-    copy: 'A visual AI layer that interprets direction, iterates silently, and gives your team sharper creative confidence.',
-    action: 'TRY SOMETHING',
+    copy: '面向企业管理、供应链、跨文化协同和复杂项目交付，用 AI 重新组织知识、流程和决策效率。',
+    action: '查看能力',
     visual: 'iris',
   },
   {
     marker: 'C',
-    eyebrow: '[ design engine ]',
+    eyebrow: '[ 未来界面 ]',
     title: (
       <>
-        BUILD<br />BEYOND<br />IMAGINATION
+        高级感<br />
+        不是装饰<br />
+        是秩序
       </>
     ),
-    copy: 'From landing pages to product flows, NUWA produces elegant systems with hierarchy, rhythm, and motion discipline.',
-    action: 'EXPLORE NOW',
+    copy: '大留白、低饱和、精准动效、清晰层级，让访问者第一眼感受到专业、稳定、前沿。',
+    action: '体验设计',
     visual: 'sphere',
   },
   {
     marker: 'D',
-    eyebrow: '[ launch ready ]',
+    eyebrow: '[ ReyMao × AI ]',
     title: (
       <>
-        // CREATE<br />WITHOUT<br />LIMITS
+        // AI<br />
+        先行者<br />
+        REYMAO
       </>
     ),
-    copy: 'Every artifact is prepared for speed: lightweight code, responsive structure, and a premium presentation layer.',
-    action: 'START CREATING',
+    copy: '某头部德企多年管理经验，十亿级项目视角，结合 AI 工具链，构建下一代个人品牌与商业展示系统。',
+    action: '联系合作',
     visual: 'grid',
   },
 ]
 
 function Particles() {
   const particles = useMemo(
-    () => Array.from({ length: 22 }, (_, index) => ({
+    () => Array.from({ length: 30 }, (_, index) => ({
       id: index,
       left: `${5 + ((index * 41) % 90)}%`,
       top: `${7 + ((index * 57) % 82)}%`,
       size: 2 + (index % 5),
-      delay: `${(index % 11) * 0.32}s`,
-      duration: `${6 + (index % 7)}s`,
+      delay: `${(index % 11) * 0.28}s`,
+      duration: `${5 + (index % 8)}s`,
     })),
     [],
   )
@@ -108,19 +116,19 @@ function Visual({ type }: { type: Slide['visual'] }) {
       )}
       {type === 'iris' && (
         <>
-          {Array.from({ length: 28 }, (_, i) => <i key={i} style={{ rotate: `${i * 12.85}deg` }} />)}
+          {Array.from({ length: 36 }, (_, i) => <i key={i} style={{ rotate: `${i * 10}deg` }} />)}
           <b />
         </>
       )}
       {type === 'sphere' && (
         <>
-          <i /><i /><i /><i /><i />
+          <i /><i /><i /><i /><i /><i />
           <b />
         </>
       )}
       {type === 'grid' && (
         <>
-          {Array.from({ length: 24 }, (_, i) => <i key={i} />)}
+          {Array.from({ length: 30 }, (_, i) => <i key={i} />)}
           <b />
         </>
       )}
@@ -163,12 +171,17 @@ function App() {
             <small>{slide.eyebrow}</small>
           </a>
           <div className="links">
-            <a href="#">home ↗</a>
-            <a href="#">plans ↗</a>
-            <a href="#">services ↗</a>
-            <a href="#">contact us ↗</a>
+            <a href="#">首页 ↗</a>
+            <a href="#">能力 ↗</a>
+            <a href="#">案例 ↗</a>
+            <a href="mailto:rey.mao@mmu.top">联系 ReyMao ↗</a>
           </div>
         </nav>
+
+        <div className="signature">
+          <span>REYMAO</span>
+          <small>AI pioneer · Systems thinker · Cross-cultural operator</small>
+        </div>
 
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
@@ -197,6 +210,11 @@ function App() {
           <p>{slide.copy}</p>
           <button>{slide.action}</button>
         </aside>
+
+        <div className="contact-strip">
+          <a href="mailto:rey.mao@mmu.top">rey.mao@mmu.top</a>
+          <span>+86 177 1707 0994</span>
+        </div>
 
         <div className="dots" aria-label="Slide navigation">
           {slides.map((item, index) => (
