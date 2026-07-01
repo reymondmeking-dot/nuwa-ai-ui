@@ -31,3 +31,7 @@ Thumbs.db
 .parcel-cache/
 coverage/
 .nyc_output/
+
+# Python bytecode (from deploy script)
+__pycache__/
+*.pyc
