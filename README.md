@@ -19,6 +19,7 @@
 - [核心页面内容](#核心页面内容)
 - [技术栈](#技术栈)
 - [项目结构](#项目结构)
+- [安装与使用 (macOS / Windows)](#安装与使用-macos--windows)
 - [本地开发](#本地开发)
 - [构建生产版本](#构建生产版本)
 - [部署说明](#部署说明)
@@ -115,6 +116,77 @@ nuwa-ai-ui/
     ├── styles.css
     └── vite-env.d.ts
 ```
+
+---
+
+## 安装与使用 (macOS / Windows)
+
+本项目自带一个跨平台的 Node CLI：`nuwa-ai-ui`（`./cli/nuwa-ai-ui.mjs`），
+所有 npm 脚本都指向它，因此在 **macOS / Linux / Windows** 上体验一致。
+要求：**Node ≥ 20.19**，以及本机安装的 **Python 3**（仅 `deploy` 命令使用）。
+
+### 1. 安装依赖
+
+```bash
+# macOS / Linux (bash, zsh)
+cd /path/to/nuwa-ai-ui
+npm install
+```
+
+```powershell
+# Windows (PowerShell)
+cd D:\AI\nuwa-ai-ui
+npm install
+```
+
+### 2. 常用命令
+
+| 命令 | 说明 |
+|---|---|
+| `npm run dev` | 启动 Vite 开发服务器（host `0.0.0.0`，默认 `http://localhost:5173`） |
+| `npm run build` | 先执行 `tsc --noEmit`，再执行 `vite build`，输出到 `dist/` |
+| `npm run preview` | 预览生产构建产物 |
+| `npm run typecheck` | 只跑 TypeScript 类型检查（`tsc --noEmit`） |
+| `npm run deploy` | 前置检查 `NUWA_DEPLOY_*` 环境变量，然后调用 `deploy_to_server.py` 上传 `dist/` |
+
+也可以直接使用 CLI：
+
+```bash
+node cli/nuwa-ai-ui.mjs --help
+node cli/nuwa-ai-ui.mjs dev
+node cli/nuwa-ai-ui.mjs build
+```
+
+### 3. 部署所需环境变量
+
+`deploy` 子命令需要以下变量（`NUWA_DEPLOY_PASSWORD` 与 `NUWA_DEPLOY_KEY` 二选一，
+后者更安全）：
+
+**macOS / Linux (bash / zsh):**
+
+```bash
+export NUWA_DEPLOY_HOST=<YOUR-DEPLOY-HOST>
+export NUWA_DEPLOY_USER=root
+export NUWA_DEPLOY_REMOTE=/var/www/reymao.com/nuwa-ai-ui
+export NUWA_DEPLOY_PASSWORD='***'
+# 或： export NUWA_DEPLOY_KEY=~/.ssh/id_ed25519
+npm run build
+npm run deploy
+```
+
+**Windows (PowerShell):**
+
+```powershell
+$env:NUWA_DEPLOY_HOST     = '<YOUR-DEPLOY-HOST>'
+$env:NUWA_DEPLOY_USER     = 'root'
+$env:NUWA_DEPLOY_REMOTE   = '/var/www/reymao.com/nuwa-ai-ui'
+$env:NUWA_DEPLOY_PASSWORD = '***'
+# 或： $env:NUWA_DEPLOY_KEY = 'C:\Users\<you>\.ssh\id_ed25519'
+npm run build
+npm run deploy
+```
+
+`deploy_to_server.py` 已列入 `.gitignore`，仅在本地存在。
 
 ---
 
@@ -245,4 +317,4 @@ python deploy_to_server.py
 
 ## License
 
-MIT © 2026 [reymondmeking-dot](https://github.com/reymondmeking-dot)。详见 [LICENSE](./LICENSE)。
+MIT © 2026 **ReyMao**（GitHub: [reymondmeking-dot](https://github.com/reymondmeking-dot)）。详见 [LICENSE](./LICENSE)。
