@@ -7,6 +7,25 @@
 ![Vite](https://img.shields.io/badge/Vite-8-646cff?style=flat-square&logo=vite&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178c6?style=flat-square&logo=typescript&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Animation-black?style=flat-square&logo=framer&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)
+
+---
+
+## 目录
+
+- [项目定位](#项目定位)
+- [在线预览](#在线预览)
+- [视觉方向](#视觉方向)
+- [核心页面内容](#核心页面内容)
+- [技术栈](#技术栈)
+- [项目结构](#项目结构)
+- [本地开发](#本地开发)
+- [构建生产版本](#构建生产版本)
+- [部署说明](#部署说明)
+- [性能策略](#性能策略)
+- [品牌信息](#品牌信息)
+- [后续可扩展方向](#后续可扩展方向)
+- [License](#license)
 
 ---
 
@@ -169,6 +188,22 @@ base: '/'
 
 然后重新构建并上传 `dist/`。
 
+### 自动化脚本 `deploy_to_server.py`
+
+脚本使用 `paramiko` 通过 SFTP 上传 `dist/` 到服务器。**所有凭据通过环境变量传入，切勿硬编码提交。**
+
+```bash
+export NUWA_DEPLOY_HOST=<YOUR-DEPLOY-HOST>
+export NUWA_DEPLOY_USER=root
+export NUWA_DEPLOY_PASSWORD='***'          # 或使用 NUWA_DEPLOY_KEY 指定私钥（推荐）
+export NUWA_DEPLOY_REMOTE=/var/www/reymao.com/nuwa-ai-ui
+
+npm run build
+python deploy_to_server.py
+```
+
+`deploy_to_server.py` 已列入 `.gitignore`，不会被提交。
+
 ---
 
 ## 性能策略
@@ -210,4 +245,4 @@ base: '/'
 
 ## License
 
-This project is currently maintained as a personal brand UI prototype for ReyMao.
+MIT © 2026 [reymondmeking-dot](https://github.com/reymondmeking-dot)。详见 [LICENSE](./LICENSE)。

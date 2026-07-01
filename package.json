@@ -2,7 +2,27 @@
   "name": "nuwa-ai-ui",
   "version": "1.0.0",
   "private": false,
+  "description": "NUWA AI UI — a premium AI-era personal brand landing page for ReyMao, built with Vite + React + TypeScript + Framer Motion.",
   "type": "module",
+  "license": "MIT",
+  "author": "reymondmeking-dot",
+  "homepage": "https://github.com/reymondmeking-dot/nuwa-ai-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reymondmeking-dot/nuwa-ai-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reymondmeking-dot/nuwa-ai-ui/issues"
+  },
+  "keywords": [
+    "ai",
+    "landing-page",
+    "vite",
+    "react",
+    "typescript",
+    "framer-motion",
+    "personal-brand"
+  ],
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
